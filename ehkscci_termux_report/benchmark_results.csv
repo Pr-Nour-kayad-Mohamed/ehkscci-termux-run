@@ -1,0 +1,5 @@
+metric,value
+threshold_sigma_c,0.8902369219890172
+auroc,0.400625
+nominal_alarm_rate,0.15
+ood_detection_rate,0.125

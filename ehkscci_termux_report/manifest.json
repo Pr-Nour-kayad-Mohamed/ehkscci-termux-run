@@ -1,0 +1,29 @@
+{
+  "benchmark": "EHK-SCCI",
+  "version": "1.0.0",
+  "created_at": "2026-11-17T03:34:56.013592+00:00",
+  "random_seed": 2026,
+  "calibration": {
+    "threshold_sigma_c": 0.8902369219890172,
+    "target_false_positive_rate": 0.05
+  },
+  "performance": {
+    "auroc": 0.400625,
+    "nominal_alarm_rate": 0.15,
+    "ood_detection_rate": 0.125
+  },
+  "artifacts": {
+    "roc_curve_csv": {
+      "path": "/data/data/com.termux/files/home/ehkscci-bench-results/ehkscci_termux_report/roc_curve.csv",
+      "sha256": "aa1437c3f35a0ffd4be8aa907b657dad177b80717841a64ed9f0bca39113cac2"
+    },
+    "benchmark_results_csv": {
+      "path": "/data/data/com.termux/files/home/ehkscci-bench-results/ehkscci_termux_report/benchmark_results.csv",
+      "sha256": "aceb803318bb2e693df2209d57357f9785defa562ec48006238178f8e7176907"
+    },
+    "manifest_json": {
+      "path": "/data/data/com.termux/files/home/ehkscci-bench-results/ehkscci_termux_report/manifest.json",
+      "sha256": "5888dc2969af68d8afe1e2b12b1624d3e5f6348d3e3bfaf1af52055fb233cd2e"
+    }
+  }
+}
