@@ -75,3 +75,28 @@ Ces résultats ne montrent pas de tendance monotone avec l’augmentation du bru
 Le résultat initial de 0.599375 doit donc être interprété comme une observation issue d’un tirage particulier, et non comme une performance stable de l’invariant I_disc dans sa forme actuelle.
 
 Le balayage indique que la cohésion spectrale locale, telle qu’elle est actuellement calculée, ne fournit pas une séparation ID/OOD robuste dans ce protocole.
+
+## Sensibilité du seuil d’abstention I_disc
+
+Une analyse de sensibilité a été réalisée sur les scores I_disc issus du benchmark ID/OOD, sans modifier la formule officielle ni le seuil gelé de 0.3.
+
+Le seuil officiel de 0.3 produit une abstention de 0.0 pour cent des cas ID et de 8.0 pour cent des cas OOD.
+
+| Seuil | Abstention ID | Abstention OOD |
+|---:|---:|---:|
+| 0.30 | 0.0000 | 0.0800 |
+| 0.35 | 0.0000 | 0.1450 |
+| 0.40 | 0.0000 | 0.2000 |
+| 0.45 | 0.0000 | 0.3150 |
+| 0.50 | 0.0000 | 0.5350 |
+| 0.55 | 0.0000 | 0.8200 |
+| 0.60 | 0.0000 | 0.9600 |
+| 0.65 | 0.0000 | 1.0000 |
+| 0.70 | 0.0000 | 1.0000 |
+| 0.75 | 0.0300 | 1.0000 |
+
+Dans ce scénario synthétique, un seuil de 0.65 sépare complètement les groupes ID et OOD : aucune abstention ID et une abstention OOD de 100 pour cent.
+
+Un seuil de 0.75 introduit 3.0 pour cent de fausses abstentions ID.
+
+Ces résultats ne modifient pas le seuil officiel gelé de 0.3. Ils indiquent que la séparation ID/OOD produite par la formule I_disc est forte, mais que le seuil de 0.3 est trop conservateur pour détecter la majorité des cas OOD dans ce scénario de simulation.
