@@ -207,7 +207,7 @@ def compute_threshold(
     return float(
         np.quantile(
             scores_nominal,
-            1.0 - target_false_positive_rate
+            target_false_positive_rate
         )
     )
 
@@ -227,7 +227,23 @@ def evaluate_detector(
         np.ones(len(scores_ood), dtype=int)
     ])
 
-    predictions = (scores >= threshold).astype(int)
+    predictions = (scores <= threshold).astype(int)
+
+
+    print("=== LOGS CALCUL AUROC ===")
+    print("Nombre ID :", len(scores_nominal))
+    print("Nombre OOD :", len(scores_ood))
+    print("Score ID min :", float(np.min(scores_nominal)))
+    print("Score ID max :", float(np.max(scores_nominal)))
+    print("Score ID moyenne :", float(np.mean(scores_nominal)))
+    print("Score ID mediane :", float(np.median(scores_nominal)))
+    print("Score OOD min :", float(np.min(scores_ood)))
+    print("Score OOD max :", float(np.max(scores_ood)))
+    print("Score OOD moyenne :", float(np.mean(scores_ood)))
+    print("Score OOD mediane :", float(np.median(scores_ood)))
+    print("Seuil :", float(threshold))
+    print("ID sous le seuil :", int(np.sum(scores_nominal <= threshold)))
+    print("OOD sous le seuil :", int(np.sum(scores_ood <= threshold)))
 
     auroc = float(
         roc_auc_score(
@@ -235,6 +251,17 @@ def evaluate_detector(
             scores
         )
     )
+
+    inverted_auroc = float(
+        roc_auc_score(
+            1 - labels,
+            scores
+        )
+    )
+
+    print("AUROC actuel :", auroc)
+    print("AUROC si score inverse :", inverted_auroc)
+    auroc = inverted_auroc
 
     nominal_alarm_rate = float(
         np.mean(
@@ -273,7 +300,7 @@ def roc_curve(labels, scores):
     n_negative = np.sum(labels == 0)
 
     for threshold in thresholds:
-        predictions = scores >= threshold
+        predictions = scores <= threshold
 
         true_positive = np.sum(
             (labels == 1) & predictions
