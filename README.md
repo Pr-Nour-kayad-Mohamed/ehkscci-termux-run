@@ -20,7 +20,7 @@ Ce dépôt contient les résultats d’une autosimulation locale du benchmark EH
 
 ## Portée des résultats
 
-Les résultats affichés proviennent d’une autosimulation locale sous Termux ARM64. Ils ne constituent pas une validation sur WAAFI, sur un système industriel réel ou sur un équipement critique.
+Les résultats affichés proviennent d’une autosimulation locale sous Termux ARM64. Ils ne constituent pas une validation sur Termux ARM64, sur un système industriel réel ou sur un équipement critique.
 
 Les résultats sont sensibles aux hypothèses de simulation, à la calibration du seuil et à la construction des scores. L’AUROC actuel de `0.400625` est inférieur à `0.5`, ce qui indique une séparation ID/OOD insuffisante dans cette configuration.
 
@@ -36,4 +36,4 @@ Les empreintes SHA-256 des artefacts sont enregistrées dans `manifest.json`.
 - Python 3
 - NumPy 2.5.4
 - SciPy
-- Exécution locale, sans connexion à WAAFI ni accès à un équipement critique
+- Exécution locale, sans connexion à Termux ARM64 ni accès à un équipement critique
