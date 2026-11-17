@@ -100,3 +100,24 @@ Dans ce scénario synthétique, un seuil de 0.65 sépare complètement les group
 Un seuil de 0.75 introduit 3.0 pour cent de fausses abstentions ID.
 
 Ces résultats ne modifient pas le seuil officiel gelé de 0.3. Ils indiquent que la séparation ID/OOD produite par la formule I_disc est forte, mais que le seuil de 0.3 est trop conservateur pour détecter la majorité des cas OOD dans ce scénario de simulation.
+
+## Résultat opérationnel prioritaire
+
+Dans le benchmark de calibration EHK-SCCI, le seuil opérationnel candidat est :
+
+X_op = 0.75
+
+À ce seuil, le benchmark atteint :
+
+- 96.15 % de détection OOD ;
+- 2.20 % de fausse abstention ID.
+
+Le seuil par défaut officiel reste :
+
+X0 = 0.3
+
+Le seuil X0 = 0.3 est conservateur dans ce scénario : il ne détecte que 3.50 % des OOD, avec 0 % de fausse abstention ID.
+
+La calibration empirique montre donc qu’un seuil opérationnel plus élevé peut exploiter la séparation ID/OOD produite par la formule I_disc. Le point X_op = 0.75 constitue le meilleur compromis observé dans ce benchmark : détection OOD élevée et fausse abstention ID faible.
+
+Ce résultat est expérimental et issu d’une simulation synthétique. Il ne constitue pas une validation opérationnelle sur un système réel, mais il établit une cible de calibration claire pour les tests suivants.
