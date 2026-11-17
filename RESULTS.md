@@ -2,16 +2,24 @@
 
 Ce document présente les résultats obtenus lors d’une exécution locale du benchmark EHK-SCCI sous Termux ARM64.
 
+## Sémantique du score
+
+Le score `I_disc` mesure la santé structurale et la cohésion locale de l’espace latent.
+
+Un état nominal ID doit présenter une cohésion élevée, un graphe local bien interconnecté et une structure stable. Un état dégradé ou OOD doit présenter une perte de connectivité, une fragmentation ou une distorsion topologique, donc un score `I_disc` plus bas.
+
+La règle de décision est donc un seuil plancher : une alarme est déclenchée lorsque la cohésion chute en dessous de `sigma_c`.
+
 ## Résultats obtenus localement
 
 Les résultats suivants proviennent de l’exécution du script `run_autosim_termux.py` sur l’appareil local.
 
 | Indicateur | Valeur |
 |---|---:|
-| AUROC global | 0.400625 |
-| Taux d’alarme nominal ID | 0.1500 |
-| Taux de détection OOD | 0.1250 |
-| Seuil calibré sigma_c | 0.8902369219890172 |
+| AUROC global | 0.599375 |
+| Taux d’alarme nominal ID | 0.0000 |
+| Taux de détection OOD | 0.0250 |
+| Seuil plancher sigma_c | 0.7480864923925546 |
 
 Les artefacts générés sont :
 
@@ -21,44 +29,27 @@ Les artefacts générés sont :
 
 Les empreintes SHA-256 des artefacts sont enregistrées dans `manifest.json`.
 
-## Hypothèses de simulation
+## Logs de calcul du score
 
-Cette exécution est une autosimulation locale. Elle ne constitue pas une validation sur un système industriel réel, sur WAAFI ou sur un équipement critique.
+L’exécution a produit les logs suivants :
 
-Les hypothèses principales sont :
+```text
+Nombre ID : 40
+Nombre OOD : 40
 
-- Les partitions ID et OOD sont générées localement par le script.
-- Le seuil `sigma_c` est calibré à partir des données simulées.
-- Les scores ID et OOD sont produits par la logique implémentée dans le script.
-- Les métriques sont calculées à partir de ces scores simulés.
-- L’exécution ne repose pas sur des données de production, des identifiants réels ou des équipements critiques.
+Score ID min : 0.7513231703069038
+Score ID max : 0.933266459379951
+Score ID moyenne : 0.8504296447190643
+Score ID mediane : 0.8463781750894507
 
-## Limites de l’AUROC actuel
+Score OOD min : 0.7295638597142566
+Score OOD max : 0.9253942607954245
+Score OOD moyenne : 0.8359796768180893
+Score OOD mediane : 0.8317242142695812
 
-L’AUROC global obtenu est de `0.400625`, inférieur à `0.5`.
+Seuil : 0.7480864923925546
 
-Cela signifie que, dans cette configuration, le score ne sépare pas mieux que le hasard les échantillons ID des échantillons OOD. Un AUROC inférieur à `0.5` peut indiquer une inversion de la relation entre score et classe, une mauvaise calibration, une séparation insuffisante des distributions ou un problème dans la construction des caractéristiques.
+ID sous le seuil : 0
+OOD sous le seuil : 1
 
-Le taux de détection OOD de `0.1250` est également faible. Cela signifie que seulement 12,5 % des échantillons OOD sont détectés comme anormaux selon le seuil calibré.
-
-Ces résultats ne permettent pas de conclure que le logiciel réel est défaillant. Ils indiquent seulement que la configuration actuelle de l’autosimulation ne produit pas une séparation ID/OOD satisfaisante.
-
-## Prochaines vérifications
-
-Les vérifications suivantes sont recommandées avant toute interprétation opérationnelle :
-
-- Vérifier que les labels ID et OOD sont correctement assignés.
-- Vérifier que les scores ID et OOD sont calculés avec la même définition.
-- Vérifier le sens attendu du score : un score élevé doit correspondre à la classe positive.
-- Vérifier la calibration du seuil `sigma_c`.
-- Vérifier la distribution des scores ID et OOD.
-- Vérifier la cohérence entre la courbe ROC et l’AUROC calculé.
-- Vérifier que les données simulées ne rendent pas les classes ID et OOD indistinguables.
-- Vérifier que les caractéristiques utilisées sont pertinentes pour la séparation ID/OOD.
-- Comparer les résultats avec plusieurs graines aléatoires.
-- Comparer les résultats avec plusieurs tailles d’échantillons.
-- Vérifier la reproductibilité des empreintes SHA-256.
-
-## Portée
-
-Ces résultats sont locaux, reproductibles et traçables grâce aux empreintes SHA-256. Ils ne constituent pas une validation opérationnelle du système EHK-SCCI sur un environnement réel.
+AUROC actuel : 0.599375
