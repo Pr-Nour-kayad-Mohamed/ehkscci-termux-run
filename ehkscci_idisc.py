@@ -2,7 +2,7 @@ import numpy as np
 
 def compute_Idisc(y: np.ndarray, A_D: np.ndarray, x_hat: np.ndarray, readout_SNR_linear: float, retained_fraction: float) -> dict:
     """
-    Calcule l'invariant de discrimination I_disc selon la spécification Catalyst V3.7.
+    Calcule l'invariant de discrimination I_disc selon la spécification EHK-SCCI.
     
     Formule :
       I_disc = 0.5 * (1 - residual) + 0.3 * sigma_min + 0.2 * SNR_norm
