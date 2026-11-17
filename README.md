@@ -18,6 +18,14 @@ Ce dépôt contient les résultats d’une autosimulation locale du benchmark EH
 | Taux de détection OOD | 0.1250 |
 | Seuil calibré sigma_c | 0.8902369219890172 |
 
+## Portée des résultats
+
+Les résultats affichés proviennent d’une autosimulation locale sous Termux ARM64. Ils ne constituent pas une validation sur WAAFI, sur un système industriel réel ou sur un équipement critique.
+
+Les résultats sont sensibles aux hypothèses de simulation, à la calibration du seuil et à la construction des scores. L’AUROC actuel de `0.400625` est inférieur à `0.5`, ce qui indique une séparation ID/OOD insuffisante dans cette configuration.
+
+Les détails, hypothèses, limites et prochaines vérifications sont décrits dans [`RESULTS.md`](RESULTS.md).
+
 ## Reproductibilité
 
 Les empreintes SHA-256 des artefacts sont enregistrées dans `manifest.json`.
