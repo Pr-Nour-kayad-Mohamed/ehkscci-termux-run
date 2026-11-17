@@ -1,0 +1,72 @@
+{
+  "benchmark": "EHK-SCCI EHK-SCCI I_disc benchmark",
+  "scope": "Synthetic simulation only; no operational validation",
+  "seeds": [
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+  ],
+  "n_per_group": 40,
+  "dimension": 8,
+  "id_scenario": {
+    "retained_fraction": 0.75,
+    "readout_snr_linear": 15.0,
+    "reconstruction_noise": 0.05
+  },
+  "ood_scenario": {
+    "retained_fraction": 0.45,
+    "readout_snr_linear": 5.0,
+    "reconstruction_noise": 0.35
+  },
+  "abstention_threshold": 0.3,
+  "results_csv": "idisc_benchmark_results/idisc_benchmark_results.csv",
+  "summary": [
+    {
+      "seed": 2026,
+      "id_mean_i_disc": 0.8002311076218206,
+      "ood_mean_i_disc": 0.4104534573918811,
+      "id_std_i_disc": 0.011961638620717389,
+      "ood_std_i_disc": 0.188480599440259,
+      "id_abstain_rate": 0.0,
+      "ood_abstain_rate": 0.125
+    },
+    {
+      "seed": 2027,
+      "id_mean_i_disc": 0.7960336743397411,
+      "ood_mean_i_disc": 0.4574035256876729,
+      "id_std_i_disc": 0.01874072831136377,
+      "ood_std_i_disc": 0.1590816758873673,
+      "id_abstain_rate": 0.0,
+      "ood_abstain_rate": 0.1
+    },
+    {
+      "seed": 2028,
+      "id_mean_i_disc": 0.800069238661453,
+      "ood_mean_i_disc": 0.4459385868220814,
+      "id_std_i_disc": 0.01424438188623384,
+      "ood_std_i_disc": 0.12717381781003256,
+      "id_abstain_rate": 0.0,
+      "ood_abstain_rate": 0.125
+    },
+    {
+      "seed": 2029,
+      "id_mean_i_disc": 0.7969333113782586,
+      "ood_mean_i_disc": 0.4572838203634153,
+      "id_std_i_disc": 0.020072814236661716,
+      "ood_std_i_disc": 0.18701162676307131,
+      "id_abstain_rate": 0.0,
+      "ood_abstain_rate": 0.05
+    },
+    {
+      "seed": 2030,
+      "id_mean_i_disc": 0.7914717527830688,
+      "ood_mean_i_disc": 0.4859860564838959,
+      "id_std_i_disc": 0.026365401237846735,
+      "ood_std_i_disc": 0.06592750933740518,
+      "id_abstain_rate": 0.0,
+      "ood_abstain_rate": 0.0
+    }
+  ]
+}
