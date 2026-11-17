@@ -2,6 +2,26 @@
 
 Ce dépôt contient les résultats d’une autosimulation locale du benchmark EHK-SCCI exécutée sous Termux ARM64.
 
+## Résultat opérationnel prioritaire
+
+Dans le benchmark de calibration EHK-SCCI, le seuil opérationnel candidat est :
+
+X_op = 0.75
+
+À ce seuil, le benchmark atteint :
+
+- 96.15 % de détection OOD ;
+- 2.20 % de fausse abstention ID.
+
+Le seuil par défaut officiel reste :
+
+X0 = 0.3
+
+À X0 = 0.3, le benchmark détecte 3.50 % des OOD, avec 0 % de fausse abstention ID.
+
+La calibration empirique montre qu’un seuil opérationnel plus élevé peut exploiter la séparation ID/OOD produite par la formule I_disc. Le point X_op = 0.75 constitue le meilleur compromis observé dans ce benchmark.
+
+Ces résultats sont expérimentaux et issus d’une simulation synthétique. Ils ne constituent pas une validation opérationnelle sur un système réel.
 ## Contenu
 
 - `run_autosim_termux.py` : script d’autosimulation local.
