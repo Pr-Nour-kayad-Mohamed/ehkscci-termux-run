@@ -1,4 +1,6 @@
 # EHK-SCCI — Autosimulation Termux ARM64
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24302601.svg)](https://doi.org/10.5281/zenodo.24302601)
+Archive Zenodo : https://doi.org/10.5281/zenodo.24302601
 
 Ce dépôt contient les résultats d’une autosimulation locale du benchmark EHK-SCCI exécutée sous Termux ARM64.
 
